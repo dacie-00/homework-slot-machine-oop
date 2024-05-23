@@ -77,13 +77,15 @@ class SlotMachine
 
         $matchSymbol = $this->board->cells()[$positions[0][1]][$positions[0][0]]->symbol();
         foreach ($positions as $index => $position) {
+            $x = $position[0];
+            $y = $position[1];
             if ($index === 0) {
                 continue; // First one is skipped because we don't need to check it against itself
             }
-            if ($this->board->cells()[$position[1]][$position[0]]->symbol() === null) {
+            if ($this->board->cells()[$y][$x]->symbol() === null) {
                 return false;
             }
-            if ($matchSymbol != $this->board->cells()[$position[1]][$position[0]]->symbol()) {
+            if ($matchSymbol != $this->board->cells()[$y][$x]->symbol()) {
                 return false;
             }
         }
@@ -102,7 +104,7 @@ class SlotMachine
         return (int)($match->element()->value() * count($match->condition()->positions()) * $ratio);
     }
 
-    private function display()
+    private function display(): void
     {
         $matchSymbols = [" ", "*", "&"]; // & gets drawn when two matches are overlapping
         $horizontalLine = "|\n" . str_repeat("+---", $this->board->width()) . "+\n";
