@@ -13,7 +13,7 @@ class Board
         $this->clear();
     }
 
-    private function clear()
+    private function clear(): void
     {
         for ($row = 0; $row < $this->height; $row++) {
             for ($cell = 0; $cell < $this->width; $cell++) {
@@ -48,10 +48,5 @@ class Board
     public function width(): int
     {
         return $this->width;
-    }
-
-    public function height(): int
-    {
-        return $this->height;
     }
 }
