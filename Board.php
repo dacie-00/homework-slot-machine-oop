@@ -22,24 +22,6 @@ class Board
         }
     }
 
-    public function display(): void
-    {
-        $matchSymbols = [" ", "*", "&"]; // & gets drawn when two matches are overlapping
-        $horizontalLine = str_repeat("+---", $this->width) . "+\n";
-        foreach ($this->cells as $row) {
-            echo $horizontalLine;
-            foreach ($row as $element) {
-                echo "|";
-                echo " $element ";
-//                $matchSymbol = $matchSymbols[min($element->matchCount, 2)];
-//                echo $matchSymbol . $element->symbol . $matchSymbol;
-            }
-            echo "|";
-            echo "\n";
-        }
-        echo $horizontalLine;
-    }
-
     public function cells(): array
     {
         return $this->cells;
