@@ -35,11 +35,6 @@ class Element
         return $this->matchCount;
     }
 
-    public function setMatchCount($value): void
-    {
-        $this->matchCount = $value;
-    }
-
     public function incrementMatchCount(): void
     {
         $this->matchCount++;
