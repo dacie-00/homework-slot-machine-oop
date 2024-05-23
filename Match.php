@@ -1,6 +1,7 @@
 <?php
 
-class Match {
+class Match
+{
     private Element $element;
     private WinCondition $winCondition;
 
