@@ -68,7 +68,7 @@ function displayProfit(int $profit): void
 
 echo "Welcome!\n";
 $coins = promptStartingCoins();
-$slotMachine = new SlotMachine($properties);
+$slotMachine = new SlotMachine($config);
 $bet = promptBetAmount($coins);
 
 while (true) {

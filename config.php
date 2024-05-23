@@ -3,7 +3,7 @@
 require_once "WinCondition.php";
 require_once "Element.php";
 
-$properties = [
+$config = [
     "width" => 5,
     "height" => 3,
     "winConditions" => [
