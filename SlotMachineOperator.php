@@ -16,8 +16,8 @@ class SlotMachineOperator
     public function __construct($config)
     {
         $this->coins = $this->promptStartingCoins();
-        $this->slotMachine = new SlotMachine($config);
         $this->bet = $this->promptBetAmount();
+        $this->slotMachine = new SlotMachine($config);
     }
 
     private function promptStartingCoins(): int
