@@ -10,12 +10,12 @@ class Match {
         $this->winCondition = $winCondition;
     }
 
-    public function condition()
+    public function condition(): WinCondition
     {
         return $this->winCondition;
     }
 
-    public function element()
+    public function element(): Element
     {
         return $this->element;
     }
