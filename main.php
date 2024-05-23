@@ -7,7 +7,7 @@ require_once "Match.php";
 require_once "SlotMachine.php";
 
 
-function promptStartingCoins()
+function promptStartingCoins(): int
 {
     echo "Enter the total amount of coins you wish to play with!\n";
     while (true) {
@@ -30,7 +30,7 @@ function promptStartingCoins()
     return $coins;
 }
 
-function promptBetAmount($coins)
+function promptBetAmount($coins): int
 {
     echo "Enter your bet amount\n";
     while (true) {
