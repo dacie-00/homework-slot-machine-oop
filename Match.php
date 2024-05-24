@@ -26,6 +26,7 @@ class Match
     {
         return $this->payout;
     }
+
     public function setPayout(int $payout): void
     {
         $this->payout = $payout;

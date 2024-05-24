@@ -65,27 +65,13 @@ class SlotMachineOperator
         }
     }
 
-    private function displayProfit(int $profit): void
-    {
-        $profitDisplay = abs($profit);
-        if ($profit > 0) {
-            echo "Nice! You made a profit of $profitDisplay coins!\n";
-        }
-        if ($profit < 0) {
-            echo "Oh no! You made a loss of $profitDisplay coins!\n";
-        }
-        if ($profit === 0) {
-            echo "You broke even!\n";
-        }
-    }
-
-    public function start()
+    public function start(): void
     {
         echo "Welcome!\n";
         $this->run();
     }
 
-    private function run()
+    private function run(): void
     {
         while (true) {
             echo "You have $this->coins coins.\n";
@@ -130,6 +116,20 @@ class SlotMachineOperator
                         echo "Invalid choice!\n";
                 }
             }
+        }
+    }
+
+    private function displayProfit(int $profit): void
+    {
+        $profitDisplay = abs($profit);
+        if ($profit > 0) {
+            echo "Nice! You made a profit of $profitDisplay coins!\n";
+        }
+        if ($profit < 0) {
+            echo "Oh no! You made a loss of $profitDisplay coins!\n";
+        }
+        if ($profit === 0) {
+            echo "You broke even!\n";
         }
     }
 }

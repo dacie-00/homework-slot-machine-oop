@@ -52,7 +52,7 @@ class SlotMachine
                 return $element;
             }
         }
-        return $this->elements[0]; // Code should never get here, but in case it does we return the first element
+        return $this->elements[0]; // Code should never get here, but in case it does we just return the first element
     }
 
     private function findMatches(): array
@@ -99,7 +99,7 @@ class SlotMachine
     public function display(): string
     {
         $screen = "";
-        $matchSymbols = [" ", "*", "&"]; // & gets drawn when two matches are overlapping
+        $matchSymbols = [" ", "*", "&"]; // symbols to visualize found match locations
         $horizontalLine = "|\n" . str_repeat("+---", $this->board->width()) . "+\n";
         $this->board->iterate(function ($cell, $row, $column) use (&$screen, $matchSymbols, $horizontalLine) {
             if ($column == 0) {
