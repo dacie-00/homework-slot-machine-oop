@@ -98,14 +98,26 @@ class SlotMachineOperator
                     case 1:
                         $coinsBeforePlaying = $this->coins;
                         $this->coins -= $this->bet;
-                        $this->coins += $this->slotMachine->play($this->bet);
+
+                        $matches = $this->slotMachine->play($this->bet);
+
+                        $totalPayout = 0;
+                        foreach ($matches as $match) {
+                            $totalPayout += $match->payout();
+                        }
+                        $this->coins += $totalPayout;
                         $profit = $this->coins - $coinsBeforePlaying;
+                        if ($this->bet > $this->coins) {
+                            $this->bet = $this->coins;
+                        }
+
+                        echo $this->slotMachine->display();
+                        foreach ($matches as $match) {
+                            echo "You got a match with a payout of {$match->payout()}\n";
+                        }
                         $this->displayProfit($profit);
                         if ($this->coins <= 0) {
                             exit("You ran out of money! Oh well, thanks for playing!\n");
-                        }
-                        if ($this->bet > $this->coins) {
-                            $this->bet = $this->coins;
                         }
                         break 2;
                     case 2:

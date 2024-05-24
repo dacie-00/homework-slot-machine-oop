@@ -14,19 +14,17 @@ class SlotMachine
         $this->elements = $config["elements"];
     }
 
-    public function play($bet): int
+    public function play($bet): array
     {
         $this->fillBoard();
         $matches = $this->findMatches();
 
         $betRatio = $bet / $this->baseBet;
-        $payout = 0;
         foreach ($matches as $match) {
             $this->markMatchedElements($match);
-            $payout += $this->calculateMatchPayout($match, $betRatio);
+            $match->setPayout($this->calculateMatchPayout($match, $betRatio));
         }
-        $this->display();
-        return $payout;
+        return $matches;
     }
 
     private function fillBoard(): void
@@ -98,17 +96,19 @@ class SlotMachine
         return (int)($match->element()->value() * count($match->condition()->positions()) * $ratio);
     }
 
-    private function display(): void
+    public function display(): string
     {
+        $screen = "";
         $matchSymbols = [" ", "*", "&"]; // & gets drawn when two matches are overlapping
         $horizontalLine = "|\n" . str_repeat("+---", $this->board->width()) . "+\n";
-        $this->board->iterate(function ($cell, $row, $column) use ($matchSymbols, $horizontalLine) {
+        $this->board->iterate(function ($cell, $row, $column) use (&$screen, $matchSymbols, $horizontalLine) {
             if ($column == 0) {
-                echo $horizontalLine;
+                $screen .= $horizontalLine;
             }
             $matchSymbol = $matchSymbols[min($cell->matchCount(), 2)];
-            echo "|" . $matchSymbol . $cell->symbol() . $matchSymbol;
+            $screen .= "|" . $matchSymbol . $cell->symbol() . $matchSymbol;
         });
-        echo $horizontalLine;
+        $screen .= $horizontalLine;
+        return $screen;
     }
 }
