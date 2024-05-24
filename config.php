@@ -9,10 +9,10 @@ $config = [
     "baseBet" => 5,
     "winConditions" => [
         new WinCondition([[0, 0], [1, 0], [2, 0], [3, 0], [4, 0]]),
-        new WinCondition([[0, 0], [0, 1], [0, 2]]),
-        new WinCondition([[1, 1], [2, 1], [3, 1]]),
+        new WinCondition([[0, 1], [1, 1], [2, 1], [3, 1], [4, 1]]),
+        new WinCondition([[0, 2], [1, 2], [2, 2], [3, 2], [4, 2]]),
         new WinCondition([[0, 2], [1, 1], [2, 0], [3, 1], [4, 2]]),
-        new WinCondition([[0, 2], [1, 1], [2, 0], [3, 1], [4, 2]])
+        new WinCondition([[0, 0], [1, 1], [2, 2], [3, 1], [4, 0]])
     ],
     "elements" => [
         new Element("A", 7, 1),
